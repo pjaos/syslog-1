@@ -1,5 +1,5 @@
 #include <mgos.h>
-#include "mgos_Syslog.h"
+#include "mgos_syslog.h"
 #include "Syslog.h"
 
 void mgos_syslog_logError(const char* appName, const char* fmt, ...)
