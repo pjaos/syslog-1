@@ -1,0 +1,21 @@
+author: mongoose-os
+description: Implements Syslog facility
+type: lib
+version: 1.0
+
+sources:
+  - src
+includes:
+  - include
+
+config_schema:
+ - ["syslog", "o", {title: "syslog settings"}]
+ - ["syslog.url", "s", "", {title : "The syslog server's url. The format is udp://<ip>:<port>. Typically the port is 514"}]
+ - ["syslog.hostname", "s","", {title: "hostname to use with syslog"}]
+tags:
+  - c
+  - c++
+
+build_vars:
+
+manifest_version: 2017-09-29
