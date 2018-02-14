@@ -39,7 +39,7 @@ void Syslog::log(Facility fac, Severity sev, const char* appName, const char* fm
     static char timestamp[24];
     strftime(timestamp, sizeof (timestamp), "%FT%TZ", timeinfo);
 
-    struct mg_connection* udp = mg_connect(mgos_get_mgr(), _syslog, nullptr, nullptr);
+    struct mg_connection* udp = mg_connect(mgos_get_mgr(), _syslog, NULL, NULL);
     mg_printf(udp, "<%d> %s %s %s %s %d %s ", (fac << 3) + sev, timestamp, _hostname, appName, SYSLOG_NILVALUE, _msgId, SYSLOG_NILVALUE);
     _msgId++;
 
@@ -93,9 +93,9 @@ bool Syslog::Init()
     if (!_init) {
         if (mgos_sys_config_is_initialized()) {
             _syslog = mgos_sys_config_get_syslog_url();
-            if (nullptr != _syslog && (0 != strlen(_syslog))) {
+            if (NULL != _syslog && (0 != strlen(_syslog))) {
                 _hostname = mgos_sys_config_get_syslog_hostname();
-                if (nullptr != _hostname && (0 != strlen(_hostname))) {
+                if (NULL != _hostname && (0 != strlen(_hostname))) {
                     _init = true;
                 }
             }
