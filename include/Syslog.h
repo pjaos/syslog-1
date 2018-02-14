@@ -1,5 +1,9 @@
 #pragma once
 
+#ifndef NULL
+#define NULL 0
+#endif
+
 enum Severity
 {
     SYSLOG_PRIO_EMERG, /* system is unusable */
@@ -45,8 +49,8 @@ class Syslog
 public:
 
     Syslog()
-    : _syslog(nullptr)
-    , _hostname(nullptr)
+    : _syslog(NULL)
+    , _hostname(NULL)
     {
     }
 
