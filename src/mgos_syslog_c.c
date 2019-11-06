@@ -65,8 +65,9 @@ static bool init() {
   return s_init;
 }
 
-static void mgos_syslog_log(enum mgos_syslog_facility fac, enum mgos_syslog_facility sev,
-                const char *app_name, const char *fmt, va_list arg) {
+static void mgos_syslog_log(enum mgos_syslog_facility fac,
+                            enum mgos_syslog_facility sev, const char *app_name,
+                            const char *fmt, va_list arg) {
   //<34>1 2003-10-11T22:14:15.003Z mymachine.example.com
   // APP-NAME=su
   // PROCID=-
@@ -96,7 +97,7 @@ static void mgos_syslog_log(enum mgos_syslog_facility fac, enum mgos_syslog_faci
   time_t t = time(0);
   struct tm *timeinfo = localtime(&t);
   static char timestamp[24];
-  strftime(timestamp, sizeof(timestamp), "%FT%TZ", timeinfo);
+  strftime(timestamp, sizeof(timestamp), "%F %T", timeinfo);
 
   struct mg_connection *udp =
       mg_connect(mgos_get_mgr(), s_syslog->syslog, NULL, NULL);
