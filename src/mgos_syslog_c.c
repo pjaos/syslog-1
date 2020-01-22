@@ -66,7 +66,7 @@ static bool init() {
 }
 
 static void mgos_syslog_log(enum mgos_syslog_facility fac,
-                            enum mgos_syslog_facility sev, const char *app_name,
+                            enum mgos_syslog_severity sev, const char *app_name,
                             const char *fmt, va_list arg) {
   //<34>1 2003-10-11T22:14:15.003Z mymachine.example.com
   // APP-NAME=su
