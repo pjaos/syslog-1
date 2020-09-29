@@ -101,9 +101,9 @@ static void mgos_syslog_log(enum mgos_syslog_facility fac,
 
   struct mg_connection *udp =
       mg_connect(mgos_get_mgr(), s_syslog->syslog, NULL, NULL);
-  mg_printf(udp, "<%d> %s %s %s %s %d %s ", (fac << 3) + sev, timestamp,
-            s_syslog->hostname, app_name, SYSLOG_NILVALUE, s_msgId,
-            SYSLOG_NILVALUE);
+  mg_printf(udp, "<%d> %s %s %s %s %lu %s ", (fac << 3) + sev, timestamp,
+            s_syslog->hostname, app_name, SYSLOG_NILVALUE,
+            (unsigned long) s_msgId, SYSLOG_NILVALUE);
   s_msgId++;
 
   mg_vprintf(udp, fmt, arg);
