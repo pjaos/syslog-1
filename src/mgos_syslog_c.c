@@ -59,6 +59,10 @@ static bool init() {
           s_init = true;
         }
       }
+      if( !s_init ) {
+          free(s_syslog);
+          s_syslog = NULL;
+      }
     }
   }
 
